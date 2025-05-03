@@ -50,22 +50,22 @@ function Home() {
       {error && <Alert variant="danger">Error: {error}</Alert>}
 
       {data && (
-        <Card className="mx-auto shadow" style={{ maxWidth: '600px' }}>
+        <Card className="mx-auto shadow" style={{ maxWidth: '800px' }}>
           <Card.Body>
-            <Row className="align-items-center">
-              <Col md={4} className="text-center">
+            <Row className="d-flex align-items-center">
+              <Col md={4} className="">
                 <img
                   src={data.avatar_url}
                   alt="Avatar"
-                  className="img-fluid rounded-circle mb-3"
-                  width="120"
+                  className="img-fluid rounded"
+                  width="100%"
                 />
               </Col>
-              <Col md={8}>
-                <h4>{data.name || 'No Name'} <small className="text-muted">(@{data.login})</small></h4>
-                <p className="mb-1"><strong>Bio:</strong> {data.bio || 'N/A'}</p>
-                <p className="mb-1"><strong>Followers:</strong> {data.followers}</p>
-                <p className="mb-1"><strong>Public Repos:</strong> {data.public_repos}</p>
+              <Col md={8} className='ps-5'>
+                <h4>Name:-{data.name || 'No Name'}<br/> <small className="text-muted " style={{fontSize:"16px", paddingLeft:"74px"}}>(@{data.login})</small></h4>
+                <p className="mb-1"><strong className='me-5'>Bio:</strong> {data.bio || 'N/A'}</p>
+                <p className="mb-1"><strong className='me-2'>Pub Rep:</strong> {data.public_repos}</p>
+                <p className="mb-1"><strong className='me-0'>Followers:</strong> {data.followers}</p>
               </Col>
             </Row>
 
@@ -77,11 +77,14 @@ function Home() {
 
             {showRepos && repos && (
               <ListGroup variant="flush" className="mt-4">
-                <h5>Repositories:</h5>
+                <h3 style={{fontWeight:"bold"}}>Repositories:</h3>
                 {repos.map((repo) => (
                   <ListGroup.Item key={repo.id}>
                     <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className="text-decoration-none">
-                      <strong className="text-primary">{repo.name}</strong>
+                     
+                      <ul>
+                        <li> <strong className="text-primary">{repo.name}</strong></li>
+                      </ul>
                     </a>
                   </ListGroup.Item>
                 ))}
